@@ -19,12 +19,11 @@ namespace Lab_2
 
             int end_index = int.Parse(Console.ReadLine());
 
-            double prod = 0;
+            double prod = 1;
 
             if (start_index <= end_index && start_index >= 0)
             {
-                prod = (Math.Pow(-1, start_index * start_index + start_index + 1) * start_index * start_index) / (2 * start_index * start_index + 5);
-                for (int k = start_index + 1; k < end_index; k++)
+                for (int k = start_index; k < end_index; k++)
                 {
                     double temp;
                     temp = (Math.Pow(-1, k * k + k + 1) * k * k) / (2 * k * k + 5);

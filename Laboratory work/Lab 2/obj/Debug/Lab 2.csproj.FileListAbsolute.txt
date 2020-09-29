@@ -4,3 +4,10 @@ E:\Files\С# project\Lab 1\Lab 2\bin\Debug\Lab 2.pdb
 E:\Files\С# project\Lab 1\Lab 2\obj\Debug\Lab 2.csproj.CoreCompileInputs.cache
 E:\Files\С# project\Lab 1\Lab 2\obj\Debug\Lab 2.exe
 E:\Files\С# project\Lab 1\Lab 2\obj\Debug\Lab 2.pdb
+E:\Documents\Laboratory-work\Laboratory work\Lab 2\bin\Debug\Lab 2.exe.config
+E:\Documents\Laboratory-work\Laboratory work\Lab 2\bin\Debug\Lab 2.exe
+E:\Documents\Laboratory-work\Laboratory work\Lab 2\bin\Debug\Lab 2.pdb
+E:\Documents\Laboratory-work\Laboratory work\Lab 2\obj\Debug\Lab 2.csprojAssemblyReference.cache
+E:\Documents\Laboratory-work\Laboratory work\Lab 2\obj\Debug\Lab 2.csproj.CoreCompileInputs.cache
+E:\Documents\Laboratory-work\Laboratory work\Lab 2\obj\Debug\Lab 2.exe
+E:\Documents\Laboratory-work\Laboratory work\Lab 2\obj\Debug\Lab 2.pdb

@@ -1,40 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Lab_8
 {
     class SheikhGarage
     {
-        public List<Car> garage = new List<Car>();
+        static int number_car = 0;
+        public List<Car> garage { get; } = new List<Car>();
         private List<int> carFinded = new List<int>();
+        public void AddCar(Car car) => garage.Add(car);
         public List<int> FindCar(Car car)
         {
             carFinded.Clear();
 
             for (int i = 0; i < garage.Count; i++)
             {
-                if (car.car_name != "-")
+                if (car.car_name != string.Empty)
                 {
                     if (garage[i].car_name != car.car_name)
                         continue;
                 }
 
-                if(car.car_color != "-")
+                if(car.car_color != string.Empty)
                 {
                     if (garage[i].car_color != car.car_color)
                         continue;
                 }
 
-                if (car.car_speed != -1)
+                if (car.car_speed != 0)
                 {
                     if (garage[i].car_speed != car.car_speed)
                         continue;
                 }
 
-                if (car.car_year != -1)
+                if (car.car_year != 0)
                 {
                     if (garage[i].car_year != car.car_year)
                         continue;
@@ -43,38 +43,32 @@ namespace Lab_8
             }
             return carFinded;
         }
-        
-
         public void PrintInfoCar(List<int> carFinded)
         {
             if(carFinded.Count == 0)
             {
-                Console.WriteLine("Такой машины нету.");
+                Console.WriteLine("Такой машины у Вас нету.");
                 return;
             }
             foreach (var car in carFinded)
             {
-                Console.WriteLine($"\nМашина №{car+1}: ");
+                Console.WriteLine($"\n\tМашина №{car+1}: ");
                 Console.WriteLine($"\nИмя машины: {garage[car].car_name} ");
                 Console.WriteLine($"Цвет машины: {garage[car].car_color} ");
                 Console.WriteLine($"Скорость машины: {garage[car].car_speed} ");
                 Console.WriteLine($"Год выпуска машины: {garage[car].car_year} ");
             }
         }
-
-        public void RemoveCar(List<int> carFinded)
+        public void RemoveCar(int car_number)
+        { 
+            garage.RemoveAt(car_number);
+            Console.WriteLine($"Машина №{car_number + 1} '{garage[car_number - 1].car_name}' была выкинута(");
+        }
+        public void RideACar(int car_number)
         {
-            if (carFinded.Count == 0)
-            {
-                Console.WriteLine("Такой машины нету.");
-                return;
-            }
-
-            foreach (var car in carFinded)
-            {
-                garage.RemoveAt(car);
-                Console.WriteLine($"Машина №{car+1} была выкинута(");
-            }
+            Console.WriteLine($"\nЕдем на машине №{car_number} : '{garage[car_number-1].car_name}' ");
+            Thread.Sleep(2000);
+            Console.WriteLine("Приехали.\n");
         }
     }
 }

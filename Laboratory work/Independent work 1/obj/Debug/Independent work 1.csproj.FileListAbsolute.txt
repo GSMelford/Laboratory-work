@@ -1,7 +1,0 @@
-E:\Files\Laboratory work\Laboratory work\Independent work 1\obj\Debug\Independent work 1.csprojAssemblyReference.cache
-E:\Files\Laboratory work\Laboratory work\Independent work 1\obj\Debug\Independent work 1.csproj.CoreCompileInputs.cache
-E:\Files\Laboratory work\Laboratory work\Independent work 1\bin\Debug\Independent work 1.exe.config
-E:\Files\Laboratory work\Laboratory work\Independent work 1\bin\Debug\Independent work 1.exe
-E:\Files\Laboratory work\Laboratory work\Independent work 1\bin\Debug\Independent work 1.pdb
-E:\Files\Laboratory work\Laboratory work\Independent work 1\obj\Debug\Independent work 1.exe
-E:\Files\Laboratory work\Laboratory work\Independent work 1\obj\Debug\Independent work 1.pdb

@@ -1,7 +1,0 @@
-E:\Files\C# Project\Laboratory work\Lab 4\bin\Debug\Lab 4.exe.config
-E:\Files\C# Project\Laboratory work\Lab 4\bin\Debug\Lab 4.exe
-E:\Files\C# Project\Laboratory work\Lab 4\bin\Debug\Lab 4.pdb
-E:\Files\C# Project\Laboratory work\Lab 4\obj\Debug\Lab 4.csprojAssemblyReference.cache
-E:\Files\C# Project\Laboratory work\Lab 4\obj\Debug\Lab 4.csproj.CoreCompileInputs.cache
-E:\Files\C# Project\Laboratory work\Lab 4\obj\Debug\Lab 4.exe
-E:\Files\C# Project\Laboratory work\Lab 4\obj\Debug\Lab 4.pdb

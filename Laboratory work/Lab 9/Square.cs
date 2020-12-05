@@ -33,14 +33,14 @@ namespace Lab_9
             SideLength = sideLength;
         }
         public override double GetPerimeter() => SideLength * 4;
-        public override double GetSquare() => SideLength ^ 2;
+        public override double GetSquare() => SideLength * SideLength;
         public override void Draw()
         {
             Console.ForegroundColor = ShapeColor;
             if (ShapeColor == ConsoleColor.Black)
                 Console.BackgroundColor = ConsoleColor.White;
-            Console.WriteLine($"Фигура Квадрат.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
-                $"\nДлина стороны: {SideLength};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()};");
+            Console.WriteLine($"\nФигура Квадрат.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
+                $"\nДлина стороны: {SideLength};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()};\nЦвет: {ShapeColor}");
             Console.ResetColor();
         }
     }

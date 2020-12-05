@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Circle.cs" />
     <Compile Include="IDraw.cs" />
+    <Compile Include="Painter.cs" />
     <Compile Include="Picture.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

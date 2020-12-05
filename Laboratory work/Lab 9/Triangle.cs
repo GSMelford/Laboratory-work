@@ -17,7 +17,7 @@ namespace Lab_9
         {
             Random random = new Random();
             ShapeName = shapeName;
-            ShapeColor = (ConsoleColor)(new Random().Next(16));
+            ShapeColor = (ConsoleColor)random.Next(16);
             RibLength = random.Next(100);
             BaseLength = random.Next(RibLength*2);
         }
@@ -35,15 +35,15 @@ namespace Lab_9
             RibLength = ribLength;
             BaseLength = baseLength;
         }
-        public override double GetPerimeter() => BaseLength + RibLength ^ 2;
-        public override double GetSquare() => 0.25 * BaseLength * Math.Sqrt(4 * RibLength ^ 2 - BaseLength ^ 2);
+        public override double GetPerimeter() => BaseLength + RibLength * RibLength;
+        public override double GetSquare() => 0.25 * BaseLength * Math.Sqrt(4 * RibLength * RibLength - BaseLength * BaseLength);
         public override void Draw()
         {
             Console.ForegroundColor = ShapeColor;
             if (ShapeColor == ConsoleColor.Black)
                 Console.BackgroundColor = ConsoleColor.White;
-            Console.WriteLine($"Фигура Триугольник.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
-                $"\nБоковая сторона: {RibLength};\nОснование: {RibLength};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()};");
+            Console.WriteLine($"\nФигура Триугольник.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
+                $"\nБоковая сторона: {RibLength};\nОснование: {RibLength};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()}\nЦвет: {ShapeColor};");
             Console.ResetColor();
         }
     }

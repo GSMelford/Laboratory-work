@@ -16,7 +16,7 @@ namespace Lab_9
         {
             Random random = new Random();
             ShapeName = shapeName;
-            ShapeColor = (ConsoleColor)(new Random().Next(16));
+            ShapeColor = (ConsoleColor)random.Next(16);
             Radius = random.Next(100);
         }
         public Circle(string shapeName, int sideLength)
@@ -31,15 +31,15 @@ namespace Lab_9
             ShapeColor = (ConsoleColor)color;
             Radius = sideLength;
         }
-        public override double GetPerimeter() => Math.PI * (Radius ^ 2);
+        public override double GetPerimeter() => Math.PI * (Radius * Radius);
         public override double GetSquare() => 2 * Math.PI * Radius;
         public override void Draw()
         {
             Console.ForegroundColor = ShapeColor;
             if (ShapeColor == ConsoleColor.Black)
                 Console.BackgroundColor = ConsoleColor.White;
-            Console.WriteLine($"Фигура Круг.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
-                $"\nРадиус: {Radius};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()};");
+            Console.WriteLine($"\nФигура Круг.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
+                $"\nРадиус: {Radius};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()}\nЦвет: {ShapeColor};");
             Console.ResetColor();
         }
     }

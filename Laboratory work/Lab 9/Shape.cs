@@ -8,10 +8,10 @@ namespace Lab_9
 {
     abstract class Shape
     {
-        abstract public string ShapeName { get;}
+        abstract public string ShapeName { get; protected set; }
         abstract public string Color { get; set; }
-        abstract public int NumberVertices { get; }
-        abstract public int Perimeter();
-        abstract public int Square();
+        abstract public int NumberVertices { get;}
+        abstract public double GetPerimeter();
+        abstract public double GetSquare();
     }
 }

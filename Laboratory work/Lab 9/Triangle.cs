@@ -8,32 +8,30 @@ namespace Lab_9
 {
     class Triangle : Shape
     {
-        private string _shapeName;
-        private string _сolor;
-        private int _numberVertices = 4;
+        public override string ShapeName { get; protected set; }
+        public override string Color { get; set; }
+        public override int NumberVertices => 3;
         private int RibLength { get; set; }
         private int BaseLength { get; set; }
-        public override string ShapeName => _shapeName;
-        public override string Color { get { return _сolor; } set { Color = _сolor; } }
-        public override int NumberVertices => _numberVertices;
         public Triangle(string shapeName)
         {
-            _shapeName = shapeName;
-            _сolor = String.Format("#{0:X6}", new Random().Next(0x1000000));
-            RibLength = new Random().Next(100);
-            BaseLength = new Random().Next(RibLength*2);
+            Random random = new Random();
+            ShapeName = shapeName;
+            Color = String.Format("#{0:X6}", random.Next(0x1000000));
+            RibLength = random.Next(100);
+            BaseLength = random.Next(RibLength*2);
         }
         public Triangle(string shapeName, int ribLength, int baseLength)
         {
-            _shapeName = shapeName;
-            _сolor = String.Format("#{0:X6}", new Random().Next(0x1000000));
+            ShapeName = shapeName;
+            Color = String.Format("#{0:X6}", new Random().Next(0x1000000));
             RibLength = ribLength;
             BaseLength = baseLength;
         }
         public Triangle(string shapeName, int ribLength, int baseLength, string color)
         {
-            _shapeName = shapeName;
-            _сolor = color;
+            ShapeName = shapeName;
+            Color = color;
             RibLength = ribLength;
             BaseLength = baseLength;
         }

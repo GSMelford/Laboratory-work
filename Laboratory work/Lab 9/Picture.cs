@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_9
 {
-    class Picture
+    class Picture: IDraw
     {
         private List<Shape> shapes;
         public int ShapeCount { get { return shapes.Count; } }
@@ -33,5 +33,10 @@ namespace Lab_9
             return false;
         }
         public Shape GetShape(int index) => shapes.ElementAtOrDefault<Shape>(index);
+        public void Draw()
+        {
+            foreach (var shape in shapes)
+                shape.Draw();
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace Lab_9
         }
         public override double GetPerimeter() => Math.PI * (Radius ^ 2);
         public override double GetSquare() => 2 * Math.PI * Radius;
-        public void Draw()
+        public override void Draw()
         {
             Console.ForegroundColor = ShapeColor;
             if (ShapeColor == ConsoleColor.Black)

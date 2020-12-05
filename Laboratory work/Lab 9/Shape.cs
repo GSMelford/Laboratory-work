@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Lab_9
 {
-    abstract class Shape
+    abstract class Shape : IDraw
     {
         abstract public string ShapeName { get; protected set; }
         abstract public ConsoleColor ShapeColor { get; set; }
         abstract public int NumberVertices { get;}
         abstract public double GetPerimeter();
         abstract public double GetSquare();
+        abstract public void Draw();
     }
 }

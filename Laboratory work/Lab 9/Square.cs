@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Lab_9
 {
-    class Square : Shape, IDraw
+    class Square : Shape
     {
         public override string ShapeName { get; protected set; }
         public override ConsoleColor ShapeColor { get; set; }
@@ -34,7 +34,7 @@ namespace Lab_9
         }
         public override double GetPerimeter() => SideLength * 4;
         public override double GetSquare() => SideLength ^ 2;
-        public void Draw()
+        public override void Draw()
         {
             Console.ForegroundColor = ShapeColor;
             if (ShapeColor == ConsoleColor.Black)

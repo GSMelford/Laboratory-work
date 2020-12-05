@@ -9,7 +9,7 @@ namespace Lab_9
     class Triangle : Shape
     {
         public override string ShapeName { get; protected set; }
-        public override string Color { get; set; }
+        public override ConsoleColor ShapeColor { get; set; }
         public override int NumberVertices => 3;
         private int RibLength { get; set; }
         private int BaseLength { get; set; }
@@ -17,21 +17,21 @@ namespace Lab_9
         {
             Random random = new Random();
             ShapeName = shapeName;
-            Color = String.Format("#{0:X6}", random.Next(0x1000000));
+            ShapeColor = (ConsoleColor)(new Random().Next(16));
             RibLength = random.Next(100);
             BaseLength = random.Next(RibLength*2);
         }
         public Triangle(string shapeName, int ribLength, int baseLength)
         {
             ShapeName = shapeName;
-            Color = String.Format("#{0:X6}", new Random().Next(0x1000000));
+            ShapeColor = (ConsoleColor)(new Random().Next(16));
             RibLength = ribLength;
             BaseLength = baseLength;
         }
-        public Triangle(string shapeName, int ribLength, int baseLength, string color)
+        public Triangle(string shapeName, int ribLength, int baseLength, int color)
         {
             ShapeName = shapeName;
-            Color = color;
+            ShapeColor = (ConsoleColor)color;
             RibLength = ribLength;
             BaseLength = baseLength;
         }

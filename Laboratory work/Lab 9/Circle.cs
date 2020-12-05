@@ -9,25 +9,26 @@ namespace Lab_9
     class Circle : Shape
     {
         public override string ShapeName { get; protected set; }
-        public override string Color { get; set; }
+        public override ConsoleColor ShapeColor { get; set; }
         public override int NumberVertices => 0;
         private int Radius { get; set; }
         public Circle(string shapeName)
         {
+            Random random = new Random();
             ShapeName = shapeName;
-            Color = String.Format("#{0:X6}", new Random().Next(0x1000000));
-            Radius = new Random().Next(100);
+            ShapeColor = (ConsoleColor)(new Random().Next(16));
+            Radius = random.Next(100);
         }
         public Circle(string shapeName, int sideLength)
         {
             ShapeName = shapeName;
-            Color = String.Format("#{0:X6}", new Random().Next(0x1000000));
+            ShapeColor = (ConsoleColor)(new Random().Next(16));
             Radius = sideLength;
         }
-        public Circle(string shapeName, int sideLength, string сolor)
+        public Circle(string shapeName, int sideLength, int сolor)
         {
             ShapeName = shapeName;
-            Color = сolor;
+            ShapeColor = (ConsoleColor)сolor;
             Radius = sideLength;
         }
         public override double GetPerimeter() => Math.PI * (Radius ^ 2);

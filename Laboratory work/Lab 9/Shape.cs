@@ -9,11 +9,11 @@ namespace Lab_9
 {
     abstract class Shape : IDraw
     {
-        abstract public string ShapeName { get; protected set; }
-        abstract public ConsoleColor ShapeColor { get; set; }
-        abstract public int NumberVertices { get;}
-        abstract public double GetPerimeter();
-        abstract public double GetSquare();
-        abstract public void Draw();
+        public abstract string ShapeName { get; protected set; }
+        public abstract ConsoleColor ShapeColor { get; set; }
+        public abstract int NumberVertices { get;}
+        public abstract double GetPerimeter();
+        public abstract double GetSquare();
+        public abstract void Draw();
     }
 }

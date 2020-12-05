@@ -26,10 +26,10 @@ namespace Lab_9
             ShapeColor = (ConsoleColor)(new Random().Next(16));
             SideLength = sideLength;
         }
-        public Square(string shapeName, int sideLength, int сolor)
+        public Square(string shapeName, int sideLength, int color)
         {
             ShapeName = shapeName;
-            ShapeColor = (ConsoleColor)сolor;
+            ShapeColor = (ConsoleColor)color;
             SideLength = sideLength;
         }
         public override double GetPerimeter() => SideLength * 4;

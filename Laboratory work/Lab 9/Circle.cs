@@ -25,10 +25,10 @@ namespace Lab_9
             ShapeColor = (ConsoleColor)(new Random().Next(16));
             Radius = sideLength;
         }
-        public Circle(string shapeName, int sideLength, int сolor)
+        public Circle(string shapeName, int sideLength, int color)
         {
             ShapeName = shapeName;
-            ShapeColor = (ConsoleColor)сolor;
+            ShapeColor = (ConsoleColor)color;
             Radius = sideLength;
         }
         public override double GetPerimeter() => Math.PI * (Radius ^ 2);

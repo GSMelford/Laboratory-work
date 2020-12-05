@@ -33,5 +33,14 @@ namespace Lab_9
         }
         public override double GetPerimeter() => Math.PI * (Radius ^ 2);
         public override double GetSquare() => 2 * Math.PI * Radius;
+        public void Draw()
+        {
+            Console.ForegroundColor = ShapeColor;
+            if (ShapeColor == ConsoleColor.Black)
+                Console.BackgroundColor = ConsoleColor.White;
+            Console.WriteLine($"Фигура Круг.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
+                $"\nРадиус: {Radius};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()};");
+            Console.ResetColor();
+        }
     }
 }

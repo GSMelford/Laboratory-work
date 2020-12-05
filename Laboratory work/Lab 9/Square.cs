@@ -39,8 +39,9 @@ namespace Lab_9
             Console.ForegroundColor = ShapeColor;
             if (ShapeColor == ConsoleColor.Black)
                 Console.BackgroundColor = ConsoleColor.White;
-            Console.WriteLine($"Фигура Квадрат.\n Название фигуры: {ShapeName};\n Количество вершин: {NumberVertices};" +
-                $"\n Длина стороны: {SideLength};\n Периметер: {GetPerimeter()};\n Площа: {GetSquare()};");
+            Console.WriteLine($"Фигура Квадрат.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
+                $"\nДлина стороны: {SideLength};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()};");
+            Console.ResetColor();
         }
     }
 }

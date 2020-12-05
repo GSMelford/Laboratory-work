@@ -37,5 +37,14 @@ namespace Lab_9
         }
         public override double GetPerimeter() => BaseLength + RibLength ^ 2;
         public override double GetSquare() => 0.25 * BaseLength * Math.Sqrt(4 * RibLength ^ 2 - BaseLength ^ 2);
+        public void Draw()
+        {
+            Console.ForegroundColor = ShapeColor;
+            if (ShapeColor == ConsoleColor.Black)
+                Console.BackgroundColor = ConsoleColor.White;
+            Console.WriteLine($"Фигура Триугольник.\nНазвание фигуры: {ShapeName};\nКоличество вершин: {NumberVertices};" +
+                $"\nБоковая сторона: {RibLength};\nОснование: {RibLength};\nПериметер: {GetPerimeter()};\nПлоща: {GetSquare()};");
+            Console.ResetColor();
+        }
     }
 }

@@ -8,20 +8,30 @@ namespace Lab_9
 {
     class Picture
     {
-        enum ShapeName { square = 1, circle, triangle}
         private List<Shape> shapes;
+        public int ShapeCount { get { return shapes.Count; } }
         public Picture() { shapes = new List<Shape>(); }
         public Picture(int colectionsSize) { shapes = new List<Shape>(colectionsSize); }
         public void AddShape(Shape shape) { shapes.Add(shape); }
-        public bool RemoveShape(string shapeName, int typeShape, double square)
+        public bool RemoveShape(Shape shape)
         {
-            bool found;
-            foreach (var shape in shapes)
+            if (shape is Square)
             {
-                if(typeShape == square)
-                    if (shape is Square)
-                        found = true;
+                shapes.RemoveAll(s => s is Square && s.ShapeName == shape.ShapeName && s.GetSquare() > shape.GetSquare());
+                return true;
             }
+            else if (shape is Circle)
+            {
+                shapes.RemoveAll(s => s is Circle && s.ShapeName == shape.ShapeName && s.GetSquare() > shape.GetSquare());
+                return true;
+            }
+            else if (shape is Triangle)
+            {
+                shapes.RemoveAll(s => s is Triangle && s.ShapeName == shape.ShapeName && s.GetSquare() > shape.GetSquare());
+                return true;
+            }
+            return false;
         }
+        public Shape GetShape(int index) => shapes.ElementAtOrDefault<Shape>(index);
     }
 }

@@ -10,15 +10,15 @@ namespace Lab_9
     class Picture: IDraw
     {
         private List<Shape> shapes;
-        public int ShapeCount { get { return shapes.Count; } }
+        private int shapeCount =0;
+        public int ShapeCount { get { return shapeCount; }}
         public Picture() { shapes = new List<Shape>(); }
-        public Picture(int colectionsSize) { shapes = new List<Shape>(colectionsSize); }
+        public Picture(int colectionsSize) { shapes = new List<Shape>(); shapeCount  = colectionsSize; }
         public void AddShape(Shape shape) { shapes.Add(shape); }
         public bool RemoveShape(string name, int type, int square)
         {
             if (type == 1)
             {
-                Console.WriteLine(shapes[0].GetSquare());
                 shapes.RemoveAll(s => s is Square && s.ShapeName == name && s.GetSquare() < square);
                 return true;
             }

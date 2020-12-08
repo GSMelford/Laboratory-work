@@ -16,5 +16,9 @@ namespace Lab_11._2
         public static bool Adult(Student student) => student.Age >= 18;
         public static bool CheckFirstName(Student student) => student.FirstName?[0] == 'A';
         public static bool CheckLastName(Student student) => student.LastName?.Length > 3;
+        public override string ToString() =>
+            $"First name: {FirstName}\n" +
+            $"Last name: {LastName}\n" +
+            $"Age: {Age}\n";
     }
 }

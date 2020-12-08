@@ -7,7 +7,7 @@
     <ProjectGuid>{757A6B7D-73A2-4A07-B7FD-48AA9828850B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Lab_11._2</RootNamespace>
-    <AssemblyName>Lab_11._2</AssemblyName>
+    <AssemblyName>Lab 11.2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

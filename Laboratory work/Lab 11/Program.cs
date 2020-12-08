@@ -8,12 +8,12 @@ namespace Lab_11
 {
     class Program
     {
-        delegate void Operation(Computer computer);
+        
         static void Main(string[] args)
         {
             ServiceCenter serviceCenter = new ServiceCenter();
             Computer computer = new Computer();
-            Operation operation = null;
+            ServiceCenter.Operation operation = null;
 
             Console.WriteLine("Сервисный центр.");
             while(true)

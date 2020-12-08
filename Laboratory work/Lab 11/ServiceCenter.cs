@@ -9,6 +9,8 @@ namespace Lab_11
     class ServiceCenter
     {
         Random random = new Random();
+
+        public delegate void Operation(Computer computer);
         public void ReplaceWindows(Computer computer)
         {
             if (random.Next(2) == 1)

@@ -6,52 +6,52 @@ using System.Threading.Tasks;
 
 namespace Lab_11
 {
-    class ServiceСenter
+    class ServiceCenter
     {
         Random random = new Random();
-        public void ReplaceWindows(ref Computer computer)
+        public void ReplaceWindows(Computer computer)
         {
-            if (random.Next(1) == 1)
+            if (random.Next(2) == 1)
                 computer.Windows = true;
             else
                 computer.Windows = false;
         }
 
-        public void ReplaceMotherboard(ref Computer computer)
+        public void ReplaceMotherboard(Computer computer)
         {
-            if (random.Next(1) == 1)
+            if (random.Next(2) == 1)
                 computer.Motherboard = true;
             else
                 computer.Motherboard = false;
         }
 
-        public void ReplacePowerSupply(ref Computer computer)
+        public void ReplacePowerSupply(Computer computer)
         {
-            if (random.Next(1) == 1)
+            if (random.Next(2) == 1)
                 computer.PowerSupply = true;
             else
                 computer.PowerSupply = false;
         }
 
-        public void AddRAM(ref Computer computer)
+        public void AddRAM(Computer computer)
         {
-            if (random.Next(1) == 1)
+            if (random.Next(2) == 1)
                 computer.RAM = true;
             else
                 computer.RAM = false;
         }
 
-        public void ReplaceVideocard(ref Computer computer)
+        public void ReplaceVideocard(Computer computer)
         {
-            if (random.Next(1) == 1)
+            if (random.Next(2) == 1)
                 computer.Videocard = true;
             else
                 computer.Videocard = false;
         }
 
-        public void SettingsApplication(ref Computer computer)
+        public void SettingsApplication(Computer computer)
         {
-            if (random.Next(1) == 1)
+            if (random.Next(2) == 1)
                 computer.Application = true;
             else
                 computer.Application = false;

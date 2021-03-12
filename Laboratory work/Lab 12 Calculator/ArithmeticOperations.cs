@@ -9,9 +9,8 @@ namespace Lab_12_Calculator
     static class ArithmeticOperations
     {
         private static string Operation;
-        private static List<int> Operands = new List<int>();
-        
-        public static string GetResult(string operation, int operand)
+        private static List<double> Operands = new List<double>();
+        public static string GetResult(string operation, double operand)
         {
             string result = null;
             Operands.Add(operand);
@@ -21,6 +20,21 @@ namespace Lab_12_Calculator
                 {
                     case "+":
                         Operands[0] += Operands[1];
+                        result = Operands[0].ToString();
+                        Operands.RemoveAt(1);
+                        break;
+                    case "-":
+                        Operands[0] -= Operands[1];
+                        result = Operands[0].ToString();
+                        Operands.RemoveAt(1);
+                        break;
+                    case "*":
+                        Operands[0] *= Operands[1];
+                        result = Operands[0].ToString();
+                        Operands.RemoveAt(1);
+                        break;
+                    case "/":
+                        Operands[0] /= Operands[1];
                         result = Operands[0].ToString();
                         Operands.RemoveAt(1);
                         break;
@@ -38,7 +52,6 @@ namespace Lab_12_Calculator
 
             return result;
         }
-
         public static void Reset()
         {
             Operation = null;

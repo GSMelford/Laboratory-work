@@ -44,6 +44,7 @@ namespace Lab_12_Calculator
             this.TopPanel.BackColor = System.Drawing.SystemColors.MenuText;
             this.TopPanel.Controls.Add(this.NameProgram);
             this.TopPanel.Controls.Add(this.Exit);
+            this.TopPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(190, 25);
@@ -102,6 +103,7 @@ namespace Lab_12_Calculator
             this.ButtonPM.TabIndex = 2;
             this.ButtonPM.Text = "+/-";
             this.ButtonPM.UseVisualStyleBackColor = false;
+            this.ButtonPM.Click += new System.EventHandler(this.ButtonPM_Click);
             // 
             // ButtonDelete
             // 

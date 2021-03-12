@@ -16,14 +16,16 @@ namespace Lab_12_Calculator
         private readonly int ButtonCounter = 16;
         private string[] symbols = new string[] { "7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+" };
         private bool OperationActive = false;
+        private bool FirstClick = false;
         public CalculatorForm()
         {
             InitializeComponent();
-            CreatKeyboardCalc();
+            CreateKeyboardCalc();
         }
 
-        private void CreatKeyboardCalc()
+        private void CreateKeyboardCalc()
         {
+            CalculatorField.Text = "0";
             int size = 35;
             int counter = 0;
             for (int i = 0; i < ButtonCounter / 4; i++)
@@ -42,42 +44,86 @@ namespace Lab_12_Calculator
                 }
             }
         }
-
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
             CalculatorField.Clear();
             ArithmeticOperations.Reset();
+            CalculatorField.Text = "0";
+            FirstClick = false;
+        }
+        private void ButtonPM_Click(object sender, EventArgs e)
+        {
+            int number = int.Parse(CalculatorField.Text);
+            if(number != 0)
+            {
+                if (number > 0)
+                    CalculatorField.Text = "-" + CalculatorField.Text;
+                else
+                    CalculatorField.Text = (number * (-1)).ToString();
+            }
         }
         private void Button_Click(object sender, EventArgs e)
         {
             var button = sender as Button;
-            int number = 0;
+            double number = 0;
 
+            if (!FirstClick)
+            {
+                CalculatorField.Clear();
+                FirstClick = true;
+            }
+                
             if (OperationActive)
             {
                 CalculatorField.Clear();
                 OperationActive = false;
             }
-            if (int.TryParse(button.Text, out number))
+
+            if (double.TryParse(button.Text, out number))
             {
                 CalculatorField.Text += button.Text;
                 return;
             }
-             
+
             switch (button.Text)
             {
                 case "+":
                     OperationActive = true;
-                    SetResult(ArithmeticOperations.GetResult(button.Text, int.Parse(CalculatorField.Text)));
+                    SetResult(ArithmeticOperations.GetResult(button.Text, double.Parse(CalculatorField.Text)));
+                    break;
+                case "-":
+                    OperationActive = true;
+                    SetResult(ArithmeticOperations.GetResult(button.Text, double.Parse(CalculatorField.Text)));
+                    break;
+                case "*":
+                    OperationActive = true;
+                    SetResult(ArithmeticOperations.GetResult(button.Text, double.Parse(CalculatorField.Text)));
+                    break;
+                case "/":
+                    OperationActive = true;
+                    SetResult(ArithmeticOperations.GetResult(button.Text, double.Parse(CalculatorField.Text)));
                     break;
                 case "=":
-                    SetResult(ArithmeticOperations.GetResult(button.Text, int.Parse(CalculatorField.Text)));
+                    OperationActive = true;
+                    SetResult(ArithmeticOperations.GetResult(button.Text, double.Parse(CalculatorField.Text)));
                     break;
-                default:
+                case ".":
+                    if(string.IsNullOrEmpty(CalculatorField.Text))
+                    {
+                        CalculatorField.Text += "0.";
+                        return;
+                    }
+                    for (int i = 0; i < CalculatorField.Text.Length; i++)
+                        if (CalculatorField.Text[i] == '.')
+                            return;
+
+                    CalculatorField.Text += ".";
+                    break;
+               default:
+                    MessageBox.Show("Что-то пошло не так...");
                     break;
             }
         }
-
         private void SetResult(string result)
         {
             if (!string.IsNullOrEmpty(result))
@@ -100,6 +146,5 @@ namespace Lab_12_Calculator
             LastPoint = new Point(e.X, e.Y);
         }
 
-        
     }
 }

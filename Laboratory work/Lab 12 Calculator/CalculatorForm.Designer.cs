@@ -29,23 +29,27 @@ namespace Lab_12_Calculator
         /// </summary>
         private void InitializeComponent()
         {
-            this.UpPanel = new System.Windows.Forms.Panel();
+            this.TopPanel = new System.Windows.Forms.Panel();
             this.NameProgram = new System.Windows.Forms.Label();
             this.Exit = new System.Windows.Forms.Button();
-            this.UpPanel.SuspendLayout();
+            this.CalculatorField = new System.Windows.Forms.TextBox();
+            this.ButtonPM = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.KeyboardCalc = new System.Windows.Forms.Panel();
+            this.TopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // UpPanel
+            // TopPanel
             // 
-            this.UpPanel.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.UpPanel.Controls.Add(this.NameProgram);
-            this.UpPanel.Controls.Add(this.Exit);
-            this.UpPanel.Location = new System.Drawing.Point(0, 0);
-            this.UpPanel.Name = "UpPanel";
-            this.UpPanel.Size = new System.Drawing.Size(190, 25);
-            this.UpPanel.TabIndex = 0;
-            this.UpPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UpPanel_MouseDown);
-            this.UpPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.UpPanel_MouseMove);
+            this.TopPanel.BackColor = System.Drawing.SystemColors.MenuText;
+            this.TopPanel.Controls.Add(this.NameProgram);
+            this.TopPanel.Controls.Add(this.Exit);
+            this.TopPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Size = new System.Drawing.Size(190, 25);
+            this.TopPanel.TabIndex = 0;
+            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UpPanel_MouseDown);
+            this.TopPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseMove);
             // 
             // NameProgram
             // 
@@ -59,7 +63,7 @@ namespace Lab_12_Calculator
             // 
             // Exit
             // 
-            this.Exit.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.Exit.BackColor = System.Drawing.SystemColors.MenuText;
             this.Exit.FlatAppearance.BorderSize = 0;
             this.Exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
@@ -74,29 +78,84 @@ namespace Lab_12_Calculator
             this.Exit.UseVisualStyleBackColor = false;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
+            // CalculatorField
+            // 
+            this.CalculatorField.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CalculatorField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CalculatorField.Font = new System.Drawing.Font("Open Sans SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CalculatorField.Location = new System.Drawing.Point(10, 35);
+            this.CalculatorField.Name = "CalculatorField";
+            this.CalculatorField.ReadOnly = true;
+            this.CalculatorField.Size = new System.Drawing.Size(170, 29);
+            this.CalculatorField.TabIndex = 1;
+            this.CalculatorField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // ButtonPM
+            // 
+            this.ButtonPM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ButtonPM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonPM.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonPM.ForeColor = System.Drawing.Color.White;
+            this.ButtonPM.Location = new System.Drawing.Point(10, 75);
+            this.ButtonPM.Name = "ButtonPM";
+            this.ButtonPM.Size = new System.Drawing.Size(45, 25);
+            this.ButtonPM.TabIndex = 2;
+            this.ButtonPM.Text = "+/-";
+            this.ButtonPM.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(135, 75);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 25);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "C";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // KeyboardCalc
+            // 
+            this.KeyboardCalc.Location = new System.Drawing.Point(10, 110);
+            this.KeyboardCalc.Name = "KeyboardCalc";
+            this.KeyboardCalc.Size = new System.Drawing.Size(170, 170);
+            this.KeyboardCalc.TabIndex = 4;
+            // 
             // CalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(190, 315);
-            this.Controls.Add(this.UpPanel);
+            this.BackColor = System.Drawing.Color.Gray;
+            this.ClientSize = new System.Drawing.Size(190, 295);
+            this.Controls.Add(this.KeyboardCalc);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ButtonPM);
+            this.Controls.Add(this.CalculatorField);
+            this.Controls.Add(this.TopPanel);
             this.Font = new System.Drawing.Font("Open Sans SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CalculatorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Калькулятор";
-            this.UpPanel.ResumeLayout(false);
-            this.UpPanel.PerformLayout();
+            this.TopPanel.ResumeLayout(false);
+            this.TopPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel UpPanel;
+        private System.Windows.Forms.Panel TopPanel;
         private System.Windows.Forms.Button Exit;
         private System.Windows.Forms.Label NameProgram;
+        private System.Windows.Forms.TextBox CalculatorField;
+        private System.Windows.Forms.Button ButtonPM;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel KeyboardCalc;
     }
 }
 

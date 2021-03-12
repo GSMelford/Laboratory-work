@@ -34,7 +34,7 @@ namespace Lab_12_Calculator
             this.Exit = new System.Windows.Forms.Button();
             this.CalculatorField = new System.Windows.Forms.TextBox();
             this.ButtonPM = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ButtonDelete = new System.Windows.Forms.Button();
             this.KeyboardCalc = new System.Windows.Forms.Panel();
             this.TopPanel.SuspendLayout();
             this.SuspendLayout();
@@ -103,18 +103,19 @@ namespace Lab_12_Calculator
             this.ButtonPM.Text = "+/-";
             this.ButtonPM.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // ButtonDelete
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(135, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 25);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "C";
-            this.button1.UseVisualStyleBackColor = false;
+            this.ButtonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonDelete.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonDelete.ForeColor = System.Drawing.Color.White;
+            this.ButtonDelete.Location = new System.Drawing.Point(135, 75);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(45, 25);
+            this.ButtonDelete.TabIndex = 3;
+            this.ButtonDelete.Text = "C";
+            this.ButtonDelete.UseVisualStyleBackColor = false;
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
             // KeyboardCalc
             // 
@@ -130,7 +131,7 @@ namespace Lab_12_Calculator
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(190, 295);
             this.Controls.Add(this.KeyboardCalc);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ButtonDelete);
             this.Controls.Add(this.ButtonPM);
             this.Controls.Add(this.CalculatorField);
             this.Controls.Add(this.TopPanel);
@@ -154,7 +155,7 @@ namespace Lab_12_Calculator
         private System.Windows.Forms.Label NameProgram;
         private System.Windows.Forms.TextBox CalculatorField;
         private System.Windows.Forms.Button ButtonPM;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonDelete;
         private System.Windows.Forms.Panel KeyboardCalc;
     }
 }

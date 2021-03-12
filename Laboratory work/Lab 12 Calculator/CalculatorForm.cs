@@ -15,6 +15,7 @@ namespace Lab_12_Calculator
         private Point LastPoint;
         private readonly int ButtonCounter = 16;
         private string[] symbols = new string[] { "7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+" };
+        private bool OperationActive = false;
         public CalculatorForm()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace Lab_12_Calculator
                     button.ForeColor = Color.White;
                     button.BackColor = Color.FromArgb(64, 64, 64);
                     button.Text = symbols[counter++];
+                    button.Click += new EventHandler(Button_Click);
                     KeyboardCalc.Controls.Add(button);
                 }
             }
@@ -43,26 +45,48 @@ namespace Lab_12_Calculator
 
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            int tempNumber = 0;
-            if (int.TryParse(button.Text, out tempNumber))
+            CalculatorField.Clear();
+            ArithmeticOperations.Reset();
+        }
+        private void Button_Click(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            int number = 0;
+
+            if (OperationActive)
+            {
+                CalculatorField.Clear();
+                OperationActive = false;
+            }
+            if (int.TryParse(button.Text, out number))
             {
                 CalculatorField.Text += button.Text;
                 return;
             }
-                
+             
+            switch (button.Text)
+            {
+                case "+":
+                    OperationActive = true;
+                    SetResult(ArithmeticOperations.GetResult(button.Text, int.Parse(CalculatorField.Text)));
+                    break;
+                case "=":
+                    SetResult(ArithmeticOperations.GetResult(button.Text, int.Parse(CalculatorField.Text)));
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void Button_Click(object sender, EventArgs e)
+        private void SetResult(string result)
         {
-            /*var calculator_field = this.Controls["calculator_field"];
-            calculator_field.Text = ((Button)sender).Text;*/
+            if (!string.IsNullOrEmpty(result))
+                CalculatorField.Text = result;
         }
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void TopPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
@@ -71,10 +95,11 @@ namespace Lab_12_Calculator
                 this.Top += e.Y - LastPoint.Y;
             }
         }
-
         private void UpPanel_MouseDown(object sender, MouseEventArgs e)
         {
             LastPoint = new Point(e.X, e.Y);
         }
+
+        
     }
 }

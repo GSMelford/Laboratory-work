@@ -71,6 +71,8 @@ namespace Lab_12_Calculator
                     CalculatorField.Clear();
                     OperationActive = false;
                 }
+                if(CalculatorField.Text == "∞")
+                    CalculatorField.Clear();
                 if (CalculatorField.Text == "0")
                     CalculatorField.Text = button.Text;
                 else

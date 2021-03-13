@@ -61,6 +61,8 @@ namespace Lab_12_Calculator
             this.NameProgram.Size = new System.Drawing.Size(92, 18);
             this.NameProgram.TabIndex = 1;
             this.NameProgram.Text = "Калькулятор";
+            this.NameProgram.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NameProgram_MouseDown);
+            this.NameProgram.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NameProgram_MouseMove);
             // 
             // Exit
             // 

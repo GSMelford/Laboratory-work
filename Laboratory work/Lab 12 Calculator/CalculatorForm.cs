@@ -16,13 +16,11 @@ namespace Lab_12_Calculator
         private readonly int ButtonCounter = 16;
         private string[] symbols = new string[] { "7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+" };
         private bool OperationActive = false;
-        private bool FirstClick = false;
         public CalculatorForm()
         {
             InitializeComponent();
             CreateKeyboardCalc();
         }
-
         private void CreateKeyboardCalc()
         {
             CalculatorField.Text = "0";
@@ -49,11 +47,10 @@ namespace Lab_12_Calculator
             CalculatorField.Clear();
             ArithmeticOperations.Reset();
             CalculatorField.Text = "0";
-            FirstClick = false;
         }
         private void ButtonPM_Click(object sender, EventArgs e)
         {
-            int number = int.Parse(CalculatorField.Text);
+            double number = double.Parse(CalculatorField.Text);
             if(number != 0)
             {
                 if (number > 0)
@@ -67,21 +64,17 @@ namespace Lab_12_Calculator
             var button = sender as Button;
             double number = 0;
 
-            if (!FirstClick)
-            {
-                CalculatorField.Clear();
-                FirstClick = true;
-            }
-                
-            if (OperationActive)
-            {
-                CalculatorField.Clear();
-                OperationActive = false;
-            }
-
             if (double.TryParse(button.Text, out number))
             {
-                CalculatorField.Text += button.Text;
+                if (OperationActive)
+                {
+                    CalculatorField.Clear();
+                    OperationActive = false;
+                }
+                if (CalculatorField.Text == "0")
+                    CalculatorField.Text = button.Text;
+                else
+                    CalculatorField.Text += button.Text;
                 return;
             }
 
@@ -104,15 +97,13 @@ namespace Lab_12_Calculator
                     SetResult(ArithmeticOperations.GetResult(button.Text, double.Parse(CalculatorField.Text)));
                     break;
                 case "=":
-                    OperationActive = true;
                     SetResult(ArithmeticOperations.GetResult(button.Text, double.Parse(CalculatorField.Text)));
                     break;
                 case ".":
-                    if(string.IsNullOrEmpty(CalculatorField.Text))
-                    {
-                        CalculatorField.Text += "0.";
+
+                    if (OperationActive)
                         return;
-                    }
+
                     for (int i = 0; i < CalculatorField.Text.Length; i++)
                         if (CalculatorField.Text[i] == '.')
                             return;
@@ -145,6 +136,17 @@ namespace Lab_12_Calculator
         {
             LastPoint = new Point(e.X, e.Y);
         }
-
+        private void NameProgram_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - LastPoint.X;
+                this.Top += e.Y - LastPoint.Y;
+            }
+        }
+        private void NameProgram_MouseDown(object sender, MouseEventArgs e)
+        {
+            LastPoint = new Point(e.X, e.Y);
+        }
     }
 }

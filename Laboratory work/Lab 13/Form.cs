@@ -78,9 +78,11 @@ namespace Lab_13
             {
                 for (int j = 0; j < ButtonCounter / 4; j++)
                 {
-                    Button button = new Button();
-                    button.Location = new Point((size + 10) * i, (size + 10) * j);
-                    button.Size = new Size(size, size);
+                    Button button = new Button
+                    {
+                        Location = new Point((size + 10) * i, (size + 10) * j),
+                        Size = new Size(size, size)
+                    };
                     button.Click += new EventHandler(ButtonClick);
                     int number = RandomNumber(0, ButtonCounter);
                     tempNumbers.Add(number);

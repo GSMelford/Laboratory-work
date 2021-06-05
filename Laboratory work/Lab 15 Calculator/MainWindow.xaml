@@ -1,0 +1,54 @@
+﻿<Window x:Class="Lab_15_Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_15_Calculator"
+        mc:Ignorable="d"
+        Title="Calculator 2.0" Height="390" Width="288">
+    <Grid x:Name="MainContainer" Background="DarkCyan">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid x:Name="ControlContainer">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <TextBox Grid.ColumnSpan="2" 
+                     x:Name="NumberField"
+                     TextAlignment="Right"
+                     FontSize="24"
+                     FontFamily="Calibra"
+                     Height="32" Margin="8">0</TextBox>
+            
+            <Button Grid.Row="1" Grid.Column="0" 
+                    Height="32" Width="96"
+                    Background="LightSeaGreen"
+                    BorderBrush="DarkSlateGray"
+                    FontSize="18"
+                    Margin="8,0" Content="+/-"
+                    Click="ButtonChangeSignClick"></Button>
+            
+            <Button Grid.Row="1" Grid.Column="1" 
+                    Height="32" Width="96"
+                    Background="LightSeaGreen"
+                    BorderBrush="DarkSlateGray"
+                    FontSize="18"
+                    Margin="8,0" Content="C" 
+                    Click="ButtonClearClick"></Button>
+        </Grid>
+        
+        <WrapPanel x:Name="Keyboard" Grid.Row="1" Orientation="Horizontal" Margin="8">
+            
+        </WrapPanel>
+    </Grid>
+</Window>

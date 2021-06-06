@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_19"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Lab 19" 
+        MinWidth="200" 
+        MinHeight="200"
+        Width="200" 
+        Height="200" SizeChanged="MainWindow_OnSizeChanged">
     <Grid>
-        
+        <WrapPanel Background="Aquamarine" Orientation="Vertical">
+            <TextBox x:Name="TextBox" 
+                     Width="100" Margin="10" 
+                     TextChanged="TextBox_OnTextChanged"></TextBox>
+            <CheckBox x:Name="FirstCheckBox" 
+                      Margin="10" 
+                      Click="FirstCheckBox_OnClick">Checkbox 1</CheckBox>
+            <CheckBox x:Name="SecondCheckBox" 
+                      Margin="10"
+                      Click="SecondCheckBox_OnClick">Checkbox 2</CheckBox>
+        </WrapPanel>
     </Grid>
 </Window>

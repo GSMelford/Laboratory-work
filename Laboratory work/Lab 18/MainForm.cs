@@ -13,24 +13,26 @@ namespace Lab_18
 {
     public partial class MainForm : Form
     {
-        private string FolderName = "Folder_";
-        private string TestDirectoryName = "Lab_18 Fedorenko Max Test";
+        private const string FolderName = "Folder_";
+        
+        private const string TestDirectoryName = "Lab_18 Fedorenko Max Test";
+        
         private const int NumberSubFolders = 100;
-        private int SubFoldersCount = 0;
-        private DirectoryInfo dirInfo;
+        
+        private int _subFoldersCount;
+        
+        private readonly DirectoryInfo _dirInfo;
 
         public MainForm()
         {
             InitializeComponent();
-            dirInfo = new DirectoryInfo(
+            _dirInfo = new DirectoryInfo(
                 Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\" + TestDirectoryName);
-
-            
         }
 
         private void DeleteFolders()
         {
-            foreach (var folder in dirInfo.GetDirectories())
+            foreach (var folder in _dirInfo.GetDirectories())
             {
                 folder.Delete(true);
             }
@@ -56,68 +58,189 @@ namespace Lab_18
 
             Directory.Delete(@"D:\a",true);
         }
-        private void DeleteDeepFolders(DirectoryInfo dir)
-        {
-            if (dir.GetDirectories().Length > 0)
-            {
-                DeleteDeepFolders(dir.GetDirectories()[0]);
-            }
-            dir.Delete(true);
-        }
+        
         private void CreateSubFolders(DirectoryInfo dir)
         {
             try
             {
-                if (SubFoldersCount == NumberSubFolders)
+                if (_subFoldersCount == NumberSubFolders)
                     return;
 
-                dir.CreateSubdirectory(FolderName + SubFoldersCount++);
+                dir.CreateSubdirectory(FolderName + _subFoldersCount++);
                 CreateSubFolders(dir.GetDirectories()[0]);
             }
             catch (Exception)
             {
-                MessageBox.Show("Максимальное количество папок " + SubFoldersCount);
+                MessageBox.Show("Максимальное количество папок " + _subFoldersCount);
             }
         }
 
         private void CreateFolder_Click(object sender, EventArgs e)
         {
-            if (!dirInfo.Exists)
+            if (!_dirInfo.Exists)
             {
-                dirInfo.Create();
+                _dirInfo.Create();
             }
 
             for (int i = 0; i < 100; i++)
             {
-                dirInfo.CreateSubdirectory(FolderName + i);
+                _dirInfo.CreateSubdirectory(FolderName + i);
             }
 
             MessageBox.Show("Было создано 100 папок в папку \"Lab_18 Fedorenko Max Test\" на рабочем столе. " +
                 "После нажатия кнопки \"Ок\" эти папки удаляться");
 
-            if (dirInfo.Exists)
+            if (_dirInfo.Exists)
             {
                 DeleteFolders();
             }
 
-            dirInfo.Delete(true);
+            _dirInfo.Delete(true);
         }
         private void CreateSubFolder_Click(object sender, EventArgs e)
         {
-            if (!dirInfo.Exists)
+            if (!_dirInfo.Exists)
             {
-                dirInfo.Create();
+                _dirInfo.Create();
             }
             else
             {
                 DeleteFolders();
             }
 
-            CreateSubFolders(dirInfo);
+            CreateSubFolders(_dirInfo);
         }
         private void CheckMaxSubFolders_Click(object sender, EventArgs e)
         {
             ShowMaxNumberSubFolder();
+        }
+
+        private void StartFindButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TextBoxFind.Text) && !string.IsNullOrEmpty(TextBoxFindPlace.Text))
+            {
+                foreach (string path in EnumerateAllFiles(TextBoxFindPlace.Text, TextBoxFind.Text))
+                {
+                    if (MessageBox.Show($"Показать содержимое этого файла: {path}", "Просмотр файла:",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            using (StreamReader streamReader = new StreamReader(path))
+                            {
+                                TextFile.Text = streamReader.ReadToEnd();
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Мы не смогли открыть файл...", "Ошибка при открытии файла!");
+                            throw;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void TextBoxFindPlace_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog browserDialog = new FolderBrowserDialog();
+            if (browserDialog.ShowDialog() == DialogResult.OK)
+            {
+                TextBoxFindPlace.Text = browserDialog.SelectedPath;
+            }
+        }
+
+        private static IEnumerable<string> EnumerateAllFiles(string path, string pattern)
+        { 
+            IEnumerable<string> files = null;
+            try
+            {
+                files = Directory.EnumerateFiles(path, pattern);
+            }
+            catch
+            {
+                // ignored
+            }
+
+            if (files != null)
+            {
+                foreach (var file in files) yield return file;
+            }
+
+            IEnumerable<string> directories = null;
+            try
+            {
+                directories = Directory.EnumerateDirectories(path);
+            }
+            catch
+            {
+                // ignored
+            }
+
+            if (directories != null)
+            {
+                foreach (var file in directories.SelectMany(d => EnumerateAllFiles(d, pattern)))
+                {
+                    yield return file;
+                }
+            }
+        }
+
+        private void OpenFileButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(FileNameTextBox.Text))
+            {
+                try
+                {
+                    using (StreamReader streamReader = new StreamReader(FileNameTextBox.Text))
+                    {
+                        TextFile.Text = streamReader.ReadToEnd();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Мы не смогли открыть файл...", "Ошибка при открытии файла!");
+                    throw;
+                }
+            }
+        }
+
+        private void FileNameTextBox_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FileNameTextBox.Text = fileDialog.FileName;
+            }
+        }
+
+        private int TryCreateFolder()
+        {
+            string tempName = "a";
+            
+            try
+            {
+                while (true)
+                {
+                    if (!_dirInfo.Exists)
+                    {
+                        _dirInfo.Create();
+                    }
+                    _dirInfo.CreateSubdirectory(tempName);
+                    tempName += "a";
+                    _dirInfo.Delete(true);
+                }
+            }
+            catch
+            {
+                return tempName.Length - 1;
+            }
+            
+        }
+
+        private void CheckFolderNameLengthButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(TryCreateFolder().ToString());
         }
     }
 }

@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_17"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Lab 17" 
+        MinHeight="350" 
+        MinWidth="525"
+        Width="640"
+        Height="480">
+    <Grid >
+        <Button
+            x:Name="ExitButton"
+            Width="128"
+            Height="64"
+            Background="LightSalmon"
+            BorderBrush="Coral"
+            Content="Exit"
+            FontSize="32"
+            Click="ExitButtonOnClick"></Button>
+        <TextBlock>
+            <Canvas x:Name="MyCanvas">
+                <TextBlock x:Name="Block"></TextBlock>
+                <StackPanel 
+                    x:Name="Panel"
+                    MouseMove="OnMouseMove"
+                    Background="Transparent"
+                    Width="168"
+                    Height="104"
+                    Canvas.Top="100"
+                    Canvas.Left="200">
+                    <Button
+                        Margin="20"
+                        x:Name="CatchButton"
+                        Width="128"
+                        Height="64"
+                        Background="LightSalmon"
+                        BorderBrush="Coral"
+                        Content="Catch Me"
+                        FontSize="24"
+                        Click="CatchButton_OnClick"></Button>
+                </StackPanel>
+            </Canvas>
+        </TextBlock>
     </Grid>
 </Window>

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -35,22 +34,24 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Data"/>
-        <Reference Include="System.Xml"/>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Xml" />
         <Reference Include="System.Xaml">
             <RequiredTargetFramework>4.0</RequiredTargetFramework>
         </Reference>
-        <Reference Include="WindowsBase"/>
-        <Reference Include="PresentationCore"/>
-        <Reference Include="PresentationFramework"/>
+        <Reference Include="WindowsBase" />
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
     </ItemGroup>
     <ItemGroup>
         <ApplicationDefinition Include="App.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
+        <Compile Include="MousePosition.cs" />
+        <Compile Include="WindowSize.cs" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -79,7 +80,13 @@
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
-        <None Include="App.config"/>
+        <None Include="App.config" />
     </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <ItemGroup>
+      <ProjectReference Include="..\Lab 19\Lab 19.csproj">
+        <Project>{0239bb77-c57c-49bd-939f-d35a499dade4}</Project>
+        <Name>Lab 19</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

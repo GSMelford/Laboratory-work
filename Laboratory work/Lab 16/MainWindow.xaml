@@ -3,10 +3,93 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Lab_16"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Lab 16" 
+        Height="480"
+        Width="320" 
+        ResizeMode="NoResize">
     <Grid>
-        
+        <TabControl>
+            <TabItem>
+                
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Red" />
+                        <TextBlock Margin="3">Task 1</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                
+                <WrapPanel 
+                    Background="LightCoral" 
+                    Orientation="Vertical">
+                    
+                    <TextBlock 
+                        Margin="8" 
+                        FontSize="24" 
+                        Foreground="Black">Enter the text:</TextBlock>
+                    
+                    <TextBox 
+                        x:Name="SentenceTextBox" 
+                        Margin="8" 
+                        Width="300" 
+                        Height="32"
+                        FontSize="22"></TextBox>
+                    
+                    <Button 
+                        Margin="8" 
+                        Width="260" 
+                        Height="32" 
+                        Content="Add" 
+                        Click="AddButtonOnClick"></Button>
+                    
+                    <Button 
+                        Margin="8" 
+                        Width="260" 
+                        Height="32"
+                        Content="Remove" 
+                        Click="RemoveButtonOnClick"></Button>
+                    
+                    <ComboBox 
+                        VerticalAlignment="Top"
+                        x:Name="SentenceBox"
+                        Margin="8"
+                        FontSize="18"
+                        Width="260" 
+                        Height="32"></ComboBox>
+                    
+                </WrapPanel>
+            </TabItem>
+            
+            <TabItem>
+                <TabItem.Header>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Green" />
+                        <TextBlock Margin="3">Task 2</TextBlock>
+                    </StackPanel>
+                    
+                </TabItem.Header>
+                
+                <Grid Background="LightGreen">
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="340"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <WrapPanel 
+                        Grid.Row="0" 
+                        x:Name="Buttons" 
+                        HorizontalAlignment="Center"></WrapPanel>
+                    
+                    <TextBlock
+                        Grid.Row="1" 
+                        x:Name="StatusBox" 
+                        TextAlignment="Center"
+                        FontSize="24">Try it</TextBlock>
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
